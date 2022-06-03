@@ -13,12 +13,12 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import boto3
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 ################################################################################
 ## 1.0 LOAD DATA
 ################################################################################
 #lpw_data = pd.read_csv('/content/drive/MyDrive/LPW/Chris LPW Focused Divisional structure and Metrics for 2021 draft April 2022.xlsx - dataset2.csv')
-load_dotenv()
+#load_dotenv()
 
 s3 = boto3.client(
     's3',
