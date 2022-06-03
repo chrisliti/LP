@@ -22,9 +22,9 @@ load_dotenv()
 
 s3 = boto3.client(
     's3',
-    aws_access_key_id=os.getenv('ACCESS_KEY'),
-    aws_secret_access_key=os.getenv('SECRET_KEY'),
-    region_name=os.getenv('AWS_REGION')
+    aws_access_key_id=st.secrets["ACCESS_KEY"],
+    aws_secret_access_key=st.secrets["SECRET_KEY"],
+    region_name=st.secrets["AWS_REGION"]
 )
 
 bucket = "dashboatd-lp"
