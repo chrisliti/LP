@@ -6,4 +6,4 @@ datetime
 streamlit
 plotly
 boto3
-python-dotenv
+
