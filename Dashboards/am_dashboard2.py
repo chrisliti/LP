@@ -327,20 +327,19 @@ country_dist.sort_values('count',ascending=True,inplace=True)
 ########################
 #COUNTRY PIE CHART
 #######################
-#country_pie = px.pie(country_dist, values='count', names='Country', title='<b>Coaches Country Distribution 2021</b>',color='Country')#
-#pie2.plotly_chart(country_pie)
-
-country_pie = go.Figure(data=[go.Pie(labels=country_dist['Country'], values=country_dist['count'], hole=.3)])
-country_pie.update_layout(
+country_bar_plot = px.bar(country_dist2,x="count",y='Country',orientation="h",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
+country_bar_plot.update_layout(
     title={
-        'text': "<b>Coaches Country Distribution 2021</b>",
-        'y':0.9,
+        'text': '<b>Coach Count by Country 2021</b>',
+        'y':1.0,
         'x':0.5,
         'xanchor': 'center',
         'yanchor': 'top'})
 
+country_bar_plot.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
-pie2.plotly_chart(country_pie)
+
+pie2.plotly_chart(country_bar_plot)
 
 
 ## 7.1 Where do they drop off
