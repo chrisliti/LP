@@ -17,7 +17,6 @@ import boto3
 ################################################################################
 ## 1.0 LOAD DATA
 ################################################################################
-#lpw_data = pd.read_csv('/content/drive/MyDrive/LPW/Chris LPW Focused Divisional structure and Metrics for 2021 draft April 2022.xlsx - dataset2.csv')
 #load_dotenv()
 
 s3 = boto3.client(
