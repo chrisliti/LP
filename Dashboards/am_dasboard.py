@@ -421,8 +421,9 @@ st.subheader('ROLE PLAY STATISTICS')
 role_play1,role_play2 = st.columns(2)
 rp_columns = ['RP 1', 'RP2', 'RP 3']
 rp = onboarding[rp_columns]
-rp = rp.loc[rp['RP 1']=='1']
+#rp = rp.loc[rp['RP 1']=='1']
 rp[rp_columns] = rp[rp_columns].apply(pd.to_numeric, errors='coerce', axis=1)
+rp = rp.loc[rp['RP 1']==1.0]
 
 heatmap2 = px.imshow(rp,aspect="auto",color_continuous_scale='Blues')#,text_auto=True
 heatmap2.update_xaxes(side="top")
