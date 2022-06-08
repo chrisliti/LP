@@ -107,7 +107,7 @@ lpw_data.loc[lpw_data['Inquiry  Call 1'] == 0,'Inquiry  Call 1']= '0.0'
 lpw_data.loc[lpw_data['Inquiry  Call 1'] == '85.0','Inquiry  Call 1'] = '0.0'
 
 ## 9. Onboaridng
-lpw_data['Onboaridng'].fillna(0,inplace=True)
+#lpw_data['Onboaridng'].fillna(0,inplace=True)
 
 ## 10. Walt Call 2
 ## Change NH to 0
