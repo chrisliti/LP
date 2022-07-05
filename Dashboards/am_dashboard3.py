@@ -74,7 +74,7 @@ focus_data['Days On Platform'] = focus_data['Days On Platform'].dt.days
 st.set_page_config(page_title="FOCUSED ANALYTICS",page_icon=":bar_chart:",layout='wide')
 
 ## Set title
-st.title('FOCUSED - ACCOUNT MANAGER ANALYTICS DASHBOARD')
+st.title('FOCUSED - ACCOUNT MANAGER DASHBOARD')
 
 year_selections = st.multiselect('Select start year of interest',focus_data['Start Year'].unique(),default=2021)
 
