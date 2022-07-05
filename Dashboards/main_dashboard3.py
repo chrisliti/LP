@@ -71,10 +71,10 @@ focus_data['Days On Platform'] = focus_data['Days On Platform'].dt.days
 ## STREAMLIT INITIALIZE
 ################################################################################
 ## Configure page
-st.set_page_config(page_title="FOCUS ANALYTICS",page_icon=":bar_chart:",layout='wide')
+st.set_page_config(page_title="FOCUSED ANALYTICS",page_icon=":bar_chart:",layout='wide')
 
 ## Set title
-st.title('FOCUS - METRICS DASHBOARD')
+st.title('FOCUSED - METRICS DASHBOARD')
 
 st.header("SUMMARY STATISTICS")
 ################################################################################
