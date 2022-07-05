@@ -554,8 +554,10 @@ start_months['Start_Month2'] = start_months['Start_Month'].dt.to_period('M')
 start_months['End_Month2'] = start_months['End_Month'].dt.to_period('M')
 start_months[ 'Window'] = start_months['Start_Month2'].astype('str') + ' to ' + start_months['End_Month2'].astype(str)
 
+start_months.rename(columns = {'window_observation_counts':'Number of Coaches in Window', inplace = True)
 
-window_churn_bar = px.bar(data_frame=start_months, x="Window", y="window_observation_counts",color_discrete_sequence=['Blue'])
+
+window_churn_bar = px.bar(data_frame=start_months, x="Window", y="Number of Coaches in Window",color_discrete_sequence=['Blue'])
 window_churn_bar.update_layout(
     title={
         'text': '<b>Churn Rate Over 12 Months</b>',
