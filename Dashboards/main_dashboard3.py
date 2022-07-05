@@ -227,6 +227,13 @@ country_bar_plot.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid
 
 barchart2.plotly_chart(country_bar_plot)
 
+#################################################
+
+## Active Months on Platform for Cancelled Coaches
+##################################################
+
+barchart3,barchart4 = st.columns(2)
+
 ################################################
 ## 7.1 Where do they drop off
 
@@ -474,3 +481,35 @@ fig_start_dates_count.update_layout(
 fig_start_dates_count.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
 dataset2.plotly_chart(fig_start_dates_count)
+
+########################################################
+## Active Months on Platform for Cancelled Coaches
+########################################################
+
+cancelled_coaches = focus_data.loc[focus_data['Date Cancelled'].notnull()]
+
+
+## Get elements for cohort and cancelled
+
+_,Start_Month,Start_Year = get_date_elements(cancelled_coaches,'Start Date')
+_,Cancelled_Month,Cancelled_Year = get_date_elements(cancelled_coaches,'Date Cancelled')
+
+year_diff = Cancelled_Year - Start_Year
+month_diff = Cancelled_Month - Start_Month
+cancelled_coaches['Active_Months'] = year_diff*12 + month_diff + 1
+
+cancelled_coaches_grouped = cancelled_coaches.groupby(by=["Active_Months"]).size().reset_index(name="Number of Coaches")
+
+
+active_months_count = px.bar(data_frame=cancelled_coaches_grouped, x="Active_Months", y="Number of Coaches",color_discrete_sequence=['Blue'])
+active_months_count.update_layout(
+    title={
+        'text': '<b>Active Months on Platform for Cancelled Coaches</b>',
+        'y':1.0,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'})
+
+active_months_count.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
+
+barchart3.plotly_chart(active_months_count)
