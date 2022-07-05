@@ -106,7 +106,7 @@ coach_count_topn.sort_values('percent',ascending=True,inplace=True)
 ## KPI'S
 ################################################################################
 ## Row 1
-kpi1, kpi2 = st.columns(2)
+kpi1, kpi2, kpi3 = st.columns(3)
 
 kpi1.metric(label="Account Managers Count",value=f"{account_managers_count:,}")
 
@@ -204,6 +204,12 @@ dataset1.dataframe(attriting_times)
 
 
 ##6.1 Distribution by country
+
+country_reach = focus_data['Country'].nunique()
+
+kpi3.metric(label="Country Reach",value=f"{country_reach:,}")
+
+
 country_dist = focus_data['Country'].value_counts().rename_axis('Country').reset_index(name='count')
 
 country_dist2 = country_dist.loc[country_dist['Country'] != 'Unknown']
