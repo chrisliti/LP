@@ -503,7 +503,7 @@ cohort_table4 = cohort_table3.applymap(lambda value: -value + 1)
 ###########################
 cohort_table_1,cohort_table_2 = st.columns(2)
 
-rt_heatmap = px.imshow(cohort_table4.round(2), text_auto=True,color_continuous_scale='Blues',title='<b>Retention Rates 2021 Cohort Analysis</b>')
+rt_heatmap = px.imshow(cohort_table3.round(2), text_auto=True,color_continuous_scale='Blues',title='<b>Attrition Rates 2021 Cohort Analysis</b>')
 rt_heatmap.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 cohort_table_1.plotly_chart(rt_heatmap)
 
