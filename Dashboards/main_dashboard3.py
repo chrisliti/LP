@@ -501,7 +501,7 @@ cancelled_coaches['Active_Months'] = year_diff*12 + month_diff + 1
 cancelled_coaches_grouped = cancelled_coaches.groupby(by=["Active_Months"]).size().reset_index(name="Number of Coaches")
 
 
-active_months_count = px.bar(data_frame=cancelled_coaches_grouped, x="Active_Months", y="Number of Coaches",color_discrete_sequence=['Blue'])
+active_months_count = px.bar(data_frame=cancelled_coaches_grouped, x="Active_Months",y="window_churn_rate", text="Number of Coaches",color_discrete_sequence=['Blue'])
 active_months_count.update_layout(
     title={
         'text': '<b>Active Months on Platform for Cancelled Coaches</b>',
