@@ -200,7 +200,7 @@ mean_days = attriting2['Days On Platform'].describe()['mean']
 percentile_75_days = attriting2['Days On Platform'].describe()['75%']
 max_days = attriting2['Days On Platform'].describe()['max']
 attriting_times = pd.DataFrame({'Statistic':['min','percentile_25','median','mean','percentile_75','max'],'Days':[min_days,percentile_25_days,median_days,mean_days,percentile_75_days,max_days]})
-attriting_times['Days'] = round(np.ceil(attriting_times['Days']))
+attriting_times['Days'] = np.ceil(attriting_times['Days'])
 #print('Days on Platform for Cancelled Coaches')
 #print(attriting_times)
 
