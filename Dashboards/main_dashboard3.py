@@ -513,3 +513,58 @@ active_months_count.update_layout(
 active_months_count.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
 barchart3.plotly_chart(active_months_count)
+
+#####################################################################################
+## Attrition over 12 window to_period
+###################################################################################
+
+## call get month for start month
+
+focus_data['Start_Month'] = focus_data['Start Date'].apply(get_month)
+focus_data['Start_Month'].nunique()
+
+start_months = focus_data[~focus_data.duplicated('Start_Month')]
+start_months = start_months[['Start_Month']].copy()
+
+#start_months.reset_index(inplace=True)
+start_months.sort_values('Start_Month',inplace=True)
+
+start_months['End_Month'] = start_months['Start_Month'] + pd.offsets.DateOffset(years=1)
+start_months = start_months.reset_index()
+start_months.drop('index',inplace=True,axis=1)
+
+window_observation_counts = []
+window_churn_rate = []
+
+for i in range(len(start_months)):
+  sm = start_months['Start_Month'][i]
+  em = start_months['End_Month'][i]
+  select_data = focus_data[((focus_data['Start Date'] >= sm) & (focus_data['Start Date'] < em))]
+  select_observations = len(select_data)
+  select_non_attrition_rate = select_data['Stopped'].value_counts(normalize=True)[0]
+  select_churn_rate = np.round(1-select_non_attrition_rate,2)
+
+  window_observation_counts.append(select_observations)
+  window_churn_rate.append(select_churn_rate)
+
+start_months['window_observation_counts'] = window_observation_counts
+start_months['window_churn_rate'] = window_churn_rate
+
+start_months['Start_Month2'] = start_months['Start_Month'].dt.to_period('M')
+start_months['End_Month2'] = start_months['End_Month'].dt.to_period('M')
+start_months[ 'Window'] = start_months['Start_Month2'].astype('str') + ' to ' + start_months['End_Month2'].astype(str)
+
+
+window_churn_bar = px.bar(data_frame=start_months, x="Window", y="window_observation_counts",color_discrete_sequence=['Blue'])
+window_churn_bar.update_layout(
+    title={
+        'text': '<b>Churn Rate Over 12 Months</b>',
+        'y':1.0,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'})
+
+window_churn_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
+
+barchart4.plotly_chart(window_churn_bar)
+
