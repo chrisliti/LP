@@ -379,13 +379,13 @@ lead_gen_2.plotly_chart(fig_lg_count)
 #######################################
 st.header('COHORT ANALYSIS')
 
-#cohort_data = focus_data.loc[((focus_data['Start Date'].notnull()) & (focus_data['Date Cancelled'].notnull()))]
+cohort_data = focus_data.loc[((focus_data['Start Date'].notnull()) & (focus_data['Date Cancelled'].notnull()))]
 cohort_data = focus_data.loc[(focus_data['Start Date'].notnull())]
 cohort_data = cohort_data[['Cancelled 2022','Account Manager','Coach Name','Stopped','Start Date','Date Cancelled']]
 
 ## Set last date as 2022-01-01
-last_date = pd.to_datetime('2022-01-01')
-cohort_data['Date Cancelled'].fillna(last_date,inplace=True)
+#last_date = pd.to_datetime('2022-01-01')
+#cohort_data['Date Cancelled'].fillna(last_date,inplace=True)
 
 ## Helper fxns
 ## Define get month fxn
@@ -422,7 +422,7 @@ cohort_data = cohort_data.loc[cohort_data['Cohort_Index'] >= 1]
 
 ## count unique coach by start month and cohort index
 
-cohort_data2 = cohort_data.groupby(['Start_Month','Cohort_Index'])['Coach Name'].nunique().reset_index()
+cohort_data2 = cohort_data.groupby(['Start_Month','Cohort_Index'])['Coach Name'].count().reset_index()
 
 ## Pivot table of Start Month and Months on platform
 cohort_table = cohort_data2.pivot(index='Start_Month',columns='Cohort_Index',values='Coach Name')
