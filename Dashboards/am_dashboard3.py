@@ -154,7 +154,7 @@ pie1, pie2 = st.columns(2)
 fig1 = go.Figure(data=[go.Pie(labels=stopped_df['stopped'], values=stopped_df['count'], hole=.3)])
 fig1.update_layout(
     title={
-        'text': "<b>Churn Rate 2021</b>",
+        'text': "<b>Churn Rate</b>",
         'y':0.9,
         'x':0.5,
         'xanchor': 'center',
@@ -175,7 +175,7 @@ am_attrition.sort_values('Attrition Percent',ascending=True,inplace=True)
 #plt.title('Attrition percent by Account Manager 2021')
 #plt.show()
 
-fig_atr_by_ch = px.bar(am_attrition,x="Attrition Percent",y='Account Manager',orientation="h",title="<b>Attrition percent by Account Manager 2021</b>",template="plotly_white",color_discrete_sequence=['cyan']*len(am_attrition))
+fig_atr_by_ch = px.bar(am_attrition,x="Attrition Percent",y='Account Manager',orientation="h",title="<b>Attrition percent by Account Manager</b>",template="plotly_white",color_discrete_sequence=['cyan']*len(am_attrition))
 
 fig_atr_by_ch.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
@@ -216,7 +216,7 @@ kpi2.metric(label="Average Days on Platform for Cancelled Coaches",value=f"{np.c
 #st.write('Days on platform for Cancelled Coaches')
 st.header("TIME STATISTICS")
 dataset1,dataset2 = st.columns(2)
-dataset1.markdown('**Days on platform for Cancelled Coaches 2021**')
+dataset1.markdown('**Days on platform for Cancelled Coaches**')
 dataset1.dataframe(attriting_times.round())
 
 # Plot histogram
@@ -251,7 +251,7 @@ country_dist.sort_values('count',ascending=True,inplace=True)
 country_pie = go.Figure(data=[go.Pie(labels=country_dist['Country'], values=country_dist['count'], hole=.3)])
 country_pie.update_layout(
     title={
-        'text': "<b>Coaches Country Distribution 2021</b>",
+        'text': "<b>Coaches Country Distribution</b>",
         'y':0.9,
         'x':0.5,
         'xanchor': 'center',
@@ -288,7 +288,7 @@ onboarding_1, onboarding2 = st.columns(2)
 #heatmap1 = plt.figure(figsize=(30,15))
 #sns.heatmap(calls,cmap='Blues')
 #plt.title('Onboarding Calls Heatmap 2021')
-onboarding_1.markdown('**Onboarding Calls Heatmap 2021**')
+onboarding_1.markdown('**Onboarding Calls Heatmap**')
 heatmap1 = px.imshow(calls,aspect="auto",color_continuous_scale='Blues')#,text_auto=True
 heatmap1.update_xaxes(side="top")
 onboarding_1.plotly_chart(heatmap1)
@@ -313,7 +313,7 @@ fig_calls_count = px.bar(calls_count,x="Percent",y='Stage',text='Coach_Count',or
 
 fig_calls_count.update_layout(
     title={
-        'text': '<b>Onboarding Calls Transition Percentages 2021</b>',
+        'text': '<b>Onboarding Calls Transition Percentages</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -346,7 +346,7 @@ heatmap2.update_xaxes(side="top")
 #heatmap2 = plt.figure(figsize=(30,15))
 #sns.heatmap(rp,cmap='Blues')
 #plt.title('Role Play Heatmap')
-role_play1.markdown('**Role Play Heatmap 2021**')
+role_play1.markdown('**Role Play Heatmap**')
 role_play1.plotly_chart(heatmap2)
 #plt.show()
 
@@ -363,7 +363,7 @@ fig_rp_count = px.bar(rp_count,x="Percent",y='Stage',text='Coach_Count',orientat
 
 fig_rp_count.update_layout(
     title={
-        'text': '<b>Role Play Transition Percentages 2021</b>',
+        'text': '<b>Role Play Transition Percentages</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -394,7 +394,7 @@ heatmap3.update_xaxes(side="top")
 #heatmap3 = plt.figure(figsize=(30,15))
 #sns.heatmap(lg,cmap='Blues')
 #plt.title('Lead Generation Heatmap')
-lead_gen_1.markdown('**Lead Generation Heatmap 2021**')
+lead_gen_1.markdown('**Lead Generation Heatmap**')
 lead_gen_1.plotly_chart(heatmap3)
 #plt.show()
 
@@ -416,7 +416,7 @@ fig_lg_count = px.bar(lg_count,x="Percent",y='Stage',text='Coach_Count',orientat
 
 fig_lg_count.update_layout(
     title={
-        'text': '<b>Lead Generation Transition Percentages 2021</b>',
+        'text': '<b>Lead Generation Transition Percentages</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -508,12 +508,12 @@ cohort_table4 = cohort_table3.applymap(lambda value: -value + 1)
 ###########################
 cohort_table_1,cohort_table_2 = st.columns(2)
 
-rt_heatmap = px.imshow(cohort_table3.round(2), text_auto=True,color_continuous_scale='Blues',title='<b>Attrition Rates 2021 Cohort Analysis</b>')
+rt_heatmap = px.imshow(cohort_table3.round(2), text_auto=True,color_continuous_scale='Blues',title='<b>Attrition Rates Cohort Analysis</b>')
 rt_heatmap.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 cohort_table_2.plotly_chart(rt_heatmap)
 
 
-rt_cum_heatmap = px.imshow(cohort_table2, text_auto=True,color_continuous_scale='Blues',title='<b>Cummulative Drop-Off 2021 Cohort Analysis</b>')
+rt_cum_heatmap = px.imshow(cohort_table2, text_auto=True,color_continuous_scale='Blues',title='<b>Cummulative Drop-Off Cohort Analysis</b>')
 rt_cum_heatmap.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 cohort_table_1.plotly_chart(rt_cum_heatmap)
 
@@ -532,7 +532,7 @@ start_dates_count = start_dates.groupby('start_month')['start_month'].count().re
 start_dates_count.sort_values('start_month',ascending=True)
 start_dates_count['Start_Month'] = start_dates_count['start_month'].apply(lambda x: x.strftime('%B-%Y'))
 
-fig_start_dates_count = px.bar(data_frame=start_dates_count, x="Start_Month", y="counts",title="<b>New Coaches on Platform by Month 2021</b>" ,color_discrete_sequence=['Blue'])
+fig_start_dates_count = px.bar(data_frame=start_dates_count, x="Start_Month", y="counts",title="<b>New Coaches on Platform by Month</b>" ,color_discrete_sequence=['Blue'])
 
 fig_start_dates_count.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
