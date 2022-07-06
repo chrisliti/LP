@@ -213,6 +213,7 @@ kpi3.metric(label="Country Reach",value=f"{country_reach:,}")
 country_dist = focus_data['Country'].value_counts().rename_axis('Country').reset_index(name='count')
 
 country_dist2 = country_dist.loc[country_dist['Country'] != 'Unknown']
+country_dist2['percent'] = round(country_dist2['count'] / country_dist2['count'].sum(),4)*100
 country_dist2.sort_values('count',ascending=True,inplace=True)
 #px.bar(country_dist2,x="count",y='Country',orientation="h",title="<b>Attrition percentad(10) by Account Manager 2021</b>",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
 
@@ -220,7 +221,7 @@ country_dist2.sort_values('count',ascending=True,inplace=True)
 ########################
 #COUNTRY PIE CHART
 #######################
-country_bar_plot = px.bar(country_dist2,x="count",y='Country',orientation="h",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
+country_bar_plot = px.bar(country_dist2,x="count",y='Country',text='percent',orientation="h",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
 country_bar_plot.update_layout(
     title={
         'text': '<b>Coach Count by Country 2021</b>',
