@@ -553,7 +553,7 @@ for i in range(len(start_months)):
   em = start_months['End_Month'][i]
   select_data = focus_data[((focus_data['Start Date'] >= sm) & (focus_data['Start Date'] < em))]
   select_observations = len(select_data)
-  select_non_attrition_rate = select_data['Stopped_2021'].value_counts(normalize=True)[0]
+  select_non_attrition_rate = select_data['Stopped'].value_counts(normalize=True)[0]
   select_churn_rate = np.round(1-select_non_attrition_rate,2)
 
   window_observation_counts.append(select_observations)
