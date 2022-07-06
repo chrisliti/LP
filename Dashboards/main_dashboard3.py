@@ -66,6 +66,9 @@ focus_data['Cancel Year'] = focus_data['Date Cancelled'].dt.year
 focus_data['Days On Platform'] = focus_data['Date Cancelled'] - focus_data['Start Date']
 focus_data['Days On Platform'] = focus_data['Days On Platform'].dt.days
 
+focus_data['Stopped_2021'] = focus_data['Stopped'].copy()
+focus_data.loc[((focus_data['Cancel Year'] == 2022) & (focus_data['Start Year'] == 2021) & (focus_data['Stopped'] == 1)),'Stopped_2021'] = 0
+
 
 ################################################################################
 ## STREAMLIT INITIALIZE
@@ -113,10 +116,10 @@ kpi1.metric(label="Account Managers Count",value=f"{account_managers_count:,}")
 kpi2.metric(label="New Coaches Count",value=f"{new_coaches_count:,}")
 
 
-##3.0 Stopped (Churn Rate)
-stopped_df = focus_data['Stopped'].value_counts().rename_axis('stopped').reset_index(name='count')
-stopped_df.loc[stopped_df['stopped'] == 0,'stopped'] = 'Active'
-stopped_df.loc[stopped_df['stopped'] == 1,'stopped'] = 'Cancelled'
+##3.0 Stopped 2021 (Churn Rate)
+stopped_df = focus_data['Stopped_2021'].value_counts().rename_axis('Stopped_2021').reset_index(name='count')
+stopped_df.loc[stopped_df['Stopped_2021'] == 0,'Stopped_2021'] = 'Active'
+stopped_df.loc[stopped_df['Stopped_2021'] == 1,'Stopped_2021'] = 'Cancelled'
 
 
 
@@ -136,7 +139,7 @@ fig1.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)),
                        'yanchor': 'top'})          
 
 
-fig2 = go.Figure(data=[go.Pie(labels=stopped_df['stopped'], values=stopped_df['count'], hole=.3)])
+fig2 = go.Figure(data=[go.Pie(labels=stopped_df['Stopped_2021'], values=stopped_df['count'], hole=.3)])
 fig2.update_layout(
     title={
         'text': "<b>Churn Rate</b>",
@@ -150,7 +153,7 @@ pie1.plotly_chart(fig1)
 pie2.plotly_chart(fig2)
 
 ##3.1 Number of coaches cancelled in 2021 by am
-coaches_cancelled_by_am = focus_data.groupby('Account Manager')['Stopped'].sum().reset_index().rename(columns={'Stopped':'Cancelled_count'})
+coaches_cancelled_by_am = focus_data.groupby('Account Manager')['Stopped_2021'].sum().reset_index().rename(columns={'Stopped_2021':'Cancelled_count'})
 
 am_attrition = pd.merge(coaches_by_am[['Account Manager','new_coaches_count']],coaches_cancelled_by_am)
 am_attrition['Attrition Percent'] = (round(am_attrition['Cancelled_count'] / am_attrition['new_coaches_count'],4))*100
@@ -180,7 +183,7 @@ bar_chart1,barchart2 = st.columns(2)
 bar_chart1.plotly_chart(fig_atr_by_ch)
 
 ## 5.1 How long do the attriting coaches last
-attriting = focus_data.loc[focus_data['Stopped']==1]
+attriting = focus_data.loc[focus_data['Stopped_2021']==1]
 
 attriting2 = attriting.loc[attriting['Days On Platform'] > 0]
 
@@ -390,7 +393,7 @@ st.header('COHORT ANALYSIS')
 
 cohort_data = focus_data.loc[((focus_data['Start Date'].notnull()) & (focus_data['Date Cancelled'].notnull()))]
 cohort_data = focus_data.loc[(focus_data['Start Date'].notnull())]
-cohort_data = cohort_data[['Cancelled 2022','Account Manager','Coach Name','Stopped','Start Date','Date Cancelled']]
+cohort_data = cohort_data[['Cancelled 2022','Account Manager','Coach Name','Stopped_2021','Start Date','Date Cancelled']]
 
 ## Set last date as 2022-01-01
 #last_date = pd.to_datetime('2022-01-01')
@@ -550,7 +553,7 @@ for i in range(len(start_months)):
   em = start_months['End_Month'][i]
   select_data = focus_data[((focus_data['Start Date'] >= sm) & (focus_data['Start Date'] < em))]
   select_observations = len(select_data)
-  select_non_attrition_rate = select_data['Stopped'].value_counts(normalize=True)[0]
+  select_non_attrition_rate = select_data['Stopped_2021'].value_counts(normalize=True)[0]
   select_churn_rate = np.round(1-select_non_attrition_rate,2)
 
   window_observation_counts.append(select_observations)
@@ -578,4 +581,3 @@ window_churn_bar.update_layout(
 window_churn_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
 barchart4.plotly_chart(window_churn_bar)
-
