@@ -548,6 +548,7 @@ dataset2.plotly_chart(fig_start_dates_count)
 ########################################################
 
 cancelled_coaches = focus_data.loc[focus_data['Date Cancelled'].notnull()]
+cancelled_coaches = cancelled_coaches.loc[focus_data['Stopped_2021']==1]
 
 
 ## Get elements for cohort and cancelled
