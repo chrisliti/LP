@@ -537,42 +537,42 @@ jan2021_jan2022['Churned'] = jan2021_jan2022['Stopped'].copy()
 jan2021_jan2022.loc[jan2021_jan2022['Date Cancelled'] >= '2022-01-01','Churned'] = 0
 jan_window_coaches = len(jan2021_jan2022)
 jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[1],4)*100
-jan_churn_rate, jan_window_coaches
+
 
 feb2021_feb2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-02-01') & (focus_data['Start Date'] < '2022-02-01'))]
 feb2021_feb2022['Churned'] = feb2021_feb2022['Stopped'].copy()
 feb2021_feb2022.loc[feb2021_feb2022['Date Cancelled'] >= '2022-02-01','Churned'] = 0
 feb_window_coaches = len(feb2021_feb2022)
 feb_churn_rate = np.round(feb2021_feb2022['Churned'].value_counts(normalize=True)[1],4)*100
-feb_churn_rate, feb_window_coaches
+
 
 mar2021_mar2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-03-01') & (focus_data['Start Date'] < '2022-03-01'))]
 mar2021_mar2022['Churned'] = mar2021_mar2022['Stopped'].copy()
 mar2021_mar2022.loc[mar2021_mar2022['Date Cancelled'] >= '2022-03-01','Churned'] = 0
 mar_window_coaches = len(mar2021_mar2022)
 mar_churn_rate = np.round(mar2021_mar2022['Churned'].value_counts(normalize=True)[1],4)*100
-mar_churn_rate, mar_window_coaches
+
 
 apr2021_apr2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-04-01') & (focus_data['Start Date'] < '2022-04-01'))]
 apr2021_apr2022['Churned'] = apr2021_apr2022['Stopped'].copy()
 apr2021_apr2022.loc[apr2021_apr2022['Date Cancelled'] >= '2022-04-01','Churned'] = 0
 apr_window_coaches = len(apr2021_apr2022)
 apr_churn_rate = np.round(apr2021_apr2022['Churned'].value_counts(normalize=True)[1],4)*100
-apr_churn_rate, apr_window_coaches
+
 
 may2021_may2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-05-01') & (focus_data['Start Date'] < '2022-05-01'))]
 may2021_may2022['Churned'] = may2021_may2022['Stopped'].copy()
 may2021_may2022.loc[may2021_may2022['Date Cancelled'] >= '2022-05-01','Churned'] = 0
 may_window_coaches = len(may2021_may2022)
 may_churn_rate = np.round(may2021_may2022['Churned'].value_counts(normalize=True)[1],4)*100
-may_churn_rate, may_window_coaches
+
 
 june2021_june2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-06-01') & (focus_data['Start Date'] < '2022-06-01'))]
 june2021_june2022['Churned'] = june2021_june2022['Stopped'].copy()
 june2021_june2022.loc[june2021_june2022['Date Cancelled'] >= '2022-06-01','Churned'] = 0
 june_window_coaches = len(june2021_june2022)
 june_churn_rate = np.round(june2021_june2022['Churned'].value_counts(normalize=True)[1],4)*100
-june_churn_rate, june_window_coaches
+
 
 window_period = ['Jan2021 - Jan2022','Feb2021 - Feb2022','Mar2021 - Mar2022','Apr2021 - Apr2022','May2021 - May2022','June2021 - June2022']
 window_coach_count = [jan_window_coaches,feb_window_coaches,mar_window_coaches,apr_window_coaches,may_window_coaches,june_window_coaches]
