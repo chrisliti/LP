@@ -262,7 +262,7 @@ onboarding_1, onboarding2 = st.columns(2)
 heatmap1 = px.imshow(calls,text_auto=True,aspect="auto",color_continuous_scale='Blues')
 heatmap1.update_xaxes(side="top")
 
-onboarding_1.markdown('**Onboarding Calls Heatmap 2021**')
+onboarding_1.markdown('**Onboarding Calls Heatmap**')
 onboarding_1.plotly_chart(heatmap1)
 
 
@@ -307,6 +307,7 @@ rp = rp.loc[rp['RP 1']==1]
 
 heatmap2 = px.imshow(rp,text_auto=True,aspect="auto",color_continuous_scale='Blues')
 heatmap2.update_xaxes(side="top")
+role_play1.markdown('**Role Plays Heatmap**')
 role_play1.plotly_chart(heatmap2)
 
 
@@ -348,6 +349,7 @@ lg = lg.loc[lg['Alan LG 1 Group']==1]
 
 heatmap3 = px.imshow(lg,text_auto=True,aspect="auto",color_continuous_scale='Blues')
 heatmap3.update_xaxes(side="top")
+lead_gen_1.markdown('**Lead Generation Heatmap**')
 lead_gen_1.plotly_chart(heatmap3)
 
 
@@ -479,7 +481,7 @@ start_dates_count['Start_Month'] = start_dates_count['start_month'].apply(lambda
 fig_start_dates_count = px.bar(data_frame=start_dates_count, x="Start_Month", y="counts",color_discrete_sequence=['Blue'])
 fig_start_dates_count.update_layout(
     title={
-        'text': '<b>New Coaches on Platform by Month 2021</b>',
+        'text': '<b>New Coaches on Platform by Month</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
