@@ -536,14 +536,14 @@ jan2021_jan2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-01-01') & (
 jan2021_jan2022['Churned'] = jan2021_jan2022['Stopped'].copy()
 jan2021_jan2022.loc[jan2021_jan2022['Date Cancelled'] >= '2022-01-01','Churned'] = 0
 jan_window_coaches = len(jan2021_jan2022)
-jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[1],2)
+jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[1],4)*100
 jan_churn_rate, jan_window_coaches
 
 feb2021_feb2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-02-01') & (focus_data['Start Date'] < '2022-02-01'))]
 feb2021_feb2022['Churned'] = feb2021_feb2022['Stopped'].copy()
 feb2021_feb2022.loc[feb2021_feb2022['Date Cancelled'] >= '2022-02-01','Churned'] = 0
 feb_window_coaches = len(feb2021_feb2022)
-feb_churn_rate = np.round(feb2021_feb2022['Churned'].value_counts(normalize=True)[1],2)
+feb_churn_rate = np.round(feb2021_feb2022['Churned'].value_counts(normalize=True)[1],4)*100
 feb_churn_rate, feb_window_coaches
 
 mar2021_mar2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-03-01') & (focus_data['Start Date'] < '2022-03-01'))]
@@ -578,7 +578,7 @@ window_period = ['Jan2021 - Jan2022','Feb2021 - Feb2022','Mar2021 - Mar2022','Ap
 window_coach_count = [jan_window_coaches,feb_window_coaches,mar_window_coaches,apr_window_coaches,may_window_coaches,june_window_coaches]
 window_churn_rate = [jan_churn_rate,feb_churn_rate,mar_churn_rate,apr_churn_rate,may_churn_rate,june_churn_rate]
 
-window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate':window_churn_rate})
+window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate Percentage':window_churn_rate})
 
 
 window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate',text="Window Coach Count",color_discrete_sequence=['Blue'])
