@@ -392,7 +392,8 @@ lead_gen_2.plotly_chart(fig_lg_count)
 st.header('COHORT ANALYSIS')
 
 cohort_data = focus_data.loc[((focus_data['Start Date'].notnull()) & (focus_data['Date Cancelled'].notnull()))]
-cohort_data = focus_data.loc[(focus_data['Start Date'].notnull())]
+#cohort_data = cohort_data.loc[(focus_data['Start Date'].notnull())]
+cohort_data = cohort_data.loc[cohort_data['Stopped_2021']==1]
 cohort_data = cohort_data[['Cancelled 2022','Account Manager','Coach Name','Stopped_2021','Start Date','Date Cancelled']]
 
 ## Set last date as 2022-01-01
