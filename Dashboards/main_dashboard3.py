@@ -100,7 +100,7 @@ n=30
 
 coach_count_topn = coaches_by_am.sort_values('percent',ascending=False).head(n)
 coach_count_topn.sort_values('percent',ascending=True,inplace=True)
-#px.bar(coach_count_topn,x="Percent",y='Account Manager',orientation="h",title="<b>Coach Distribution (top {}) by Account Manager 2021</b>".format(n),template="plotly_white",color_discrete_sequence=['Blue']*len(am_attrition_topn))
+#px.bar(coach_count_topn,x="Percent",y='Account Manager',orientation="h",title="<b>Coach Distribution (top {}) by Account Manager</b>".format(n),template="plotly_white",color_discrete_sequence=['Blue']*len(am_attrition_topn))
 
 ################################################################################
 ## KPI'S
@@ -129,7 +129,7 @@ pie1, pie2 = st.columns(2)
 fig1 = px.bar(coach_count_topn,x="percent",y='Account Manager',text='new_coaches_count',orientation="h",title="<b>".format(n),template="plotly_white",color_discrete_sequence=['Blue']*len(coach_count_topn)) 
 fig1.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)),
                    title={
-                       'text': "<b>Coach Count (top {}) by Account Manager 2021</b>".format(n),
+                       'text': "<b>Coach Count (top {}) by Account Manager</b>".format(n),
                        'y':0.9,
                        'x':0.5,
                        'xanchor': 'center',
@@ -139,7 +139,7 @@ fig1.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)),
 fig2 = go.Figure(data=[go.Pie(labels=stopped_df['stopped'], values=stopped_df['count'], hole=.3)])
 fig2.update_layout(
     title={
-        'text': "<b>Churn Rate 2021</b>",
+        'text': "<b>Churn Rate</b>",
         'y':0.9,
         'x':0.5,
         'xanchor': 'center',
@@ -163,7 +163,7 @@ am_attrition_topn.sort_values('Attrition Percent',ascending=True,inplace=True)
 fig_atr_by_ch = px.bar(am_attrition_topn,x="Attrition Percent",y='Account Manager',text='Cancelled_count',orientation="h",template="plotly_white",color_discrete_sequence=['Blue']*len(am_attrition_topn))
 fig_atr_by_ch.update_layout(
     title={
-        'text': '<b>Attrition percent (top {}) by Account Manager 2021</b>'.format(n),
+        'text': '<b>Attrition percent (top {}) by Account Manager</b>'.format(n),
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -199,7 +199,7 @@ attriting_times = pd.DataFrame({'Statistic':['min','percentile_25','median','mea
 #st.write('Days on platform for Cancelled Coaches')
 st.header("TIME STATISTICS")
 dataset1,dataset2 = st.columns(2)
-dataset1.markdown('**Days on platform for Cancelled Coaches 2021**')
+dataset1.markdown('**Days on platform for Cancelled Coaches**')
 dataset1.dataframe(attriting_times)
 
 
@@ -215,7 +215,7 @@ country_dist = focus_data['Country'].value_counts().rename_axis('Country').reset
 country_dist2 = country_dist.loc[country_dist['Country'] != 'Unknown']
 country_dist2['percent'] = round(country_dist2['count'] / country_dist2['count'].sum(),4)*100
 country_dist2.sort_values('count',ascending=True,inplace=True)
-#px.bar(country_dist2,x="count",y='Country',orientation="h",title="<b>Attrition percentad(10) by Account Manager 2021</b>",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
+#px.bar(country_dist2,x="count",y='Country',orientation="h",title="<b>Attrition percentad(10) by Account Manager</b>",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
 
 
 ########################
@@ -224,7 +224,7 @@ country_dist2.sort_values('count',ascending=True,inplace=True)
 country_bar_plot = px.bar(country_dist2,x="count",y='Country',orientation="h",template="plotly_white",color_discrete_sequence=['Blue']*len(country_dist2))
 country_bar_plot.update_layout(
     title={
-        'text': '<b>Coach Count by Country 2021</b>',
+        'text': '<b>Coach Count by Country</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -283,7 +283,7 @@ fig_calls_count = px.bar(calls_count,x="Percent",y='Stage',text='Coach_Count',or
 
 fig_calls_count.update_layout(
     title={
-        'text': '<b>Onboarding Calls Transition Percentages 2021</b>',
+        'text': '<b>Onboarding Calls Transition Percentages</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -323,7 +323,7 @@ fig_rp_count = px.bar(rp_count,x="Percent",y='Stage',text='Coach_Count',orientat
 
 fig_rp_count.update_layout(
     title={
-        'text': '<b>Role Play Transition Percentages 2021</b>',
+        'text': '<b>Role Play Transition Percentages</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -369,7 +369,7 @@ fig_lg_count = px.bar(lg_count,x="Percent",y='Stage',text='Coach_Count',orientat
 
 fig_lg_count.update_layout(
     title={
-        'text': '<b>Lead Generation Transition Percentages 2021</b>',
+        'text': '<b>Lead Generation Transition Percentages</b>',
         'y':1.0,
         'x':0.5,
         'xanchor': 'center',
@@ -457,13 +457,13 @@ cohort_table4 = cohort_table3.applymap(lambda value: -value + 1)
 ###########################
 cohort_table_1,cohort_table_2 = st.columns(2)
 
-rt_heatmap = px.imshow(cohort_table3.round(2), text_auto=True,color_continuous_scale='Blues',title='<b>Attrition Rates 2021 Cohort Analysis</b>')
+rt_heatmap = px.imshow(cohort_table3.round(2), text_auto=True,color_continuous_scale='Blues',title='<b>Attrition Rates Cohort Analysis</b>')
 #rt_heatmap.update_xaxes(side="top")
 rt_heatmap.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 cohort_table_2.plotly_chart(rt_heatmap)
 
 
-rt_cum_heatmap = px.imshow(cohort_table2, text_auto=True,color_continuous_scale='Blues',title='<b>Cummulative Drop-Off 2021 Cohort Analysis</b>')
+rt_cum_heatmap = px.imshow(cohort_table2, text_auto=True,color_continuous_scale='Blues',title='<b>Cummulative Drop-Off Cohort Analysis</b>')
 #rt_cum_heatmap.update_xaxes(side="top")
 rt_cum_heatmap.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 cohort_table_1.plotly_chart(rt_cum_heatmap)
