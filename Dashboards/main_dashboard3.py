@@ -581,7 +581,7 @@ window_churn_rate = [jan_churn_rate,feb_churn_rate,mar_churn_rate,apr_churn_rate
 window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate Percentage':window_churn_rate})
 
 
-window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate',text="Window Churn Rate Percentage",color_discrete_sequence=['Blue'])
+window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate Percentage',text="Window Coach Count",color_discrete_sequence=['Blue'])
 window_churn_bar.update_layout(
     title={
         'text': '<b>Churn Rate Over 12 Months</b>',
