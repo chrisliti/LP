@@ -254,7 +254,7 @@ onboarding.set_index('Coach Name', inplace=True)
 calls_columns = ['Inquiry  Call 1', 'Walt Call 2', 'walt Call 3']
 calls = onboarding[calls_columns]
 calls[calls_columns] = calls[calls_columns] .apply(pd.to_numeric, errors='coerce', axis=1)
-calls = calls.loc[((calls['Inquiry  Call 1']==1)| (calls['Walt Call 2']==1) | (walt Call 3) ]
+calls = calls.loc[((calls['Inquiry  Call 1']==1)| (calls['Walt Call 2']==1) | (calls['walt Call 3']==1) ]
 
 #########################
 #ONBOARDING CALLS HEATMAP
