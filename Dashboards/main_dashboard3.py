@@ -254,7 +254,7 @@ onboarding.set_index('Coach Name', inplace=True)
 calls_columns = ['Inquiry  Call 1', 'Walt Call 2', 'walt Call 3']
 calls = onboarding[calls_columns]
 calls[calls_columns] = calls[calls_columns] .apply(pd.to_numeric, errors='coerce', axis=1)
-calls = calls.loc[((calls['Inquiry  Call 1']==1)| (calls['Walt Call 2']==1) | (calls['walt Call 3']==1) ]
+calls = calls.loc[((calls['Inquiry  Call 1']==1)| (calls['Walt Call 2']==1) | (calls['walt Call 3']==1))]
 
 #########################
 #ONBOARDING CALLS HEATMAP
@@ -306,7 +306,7 @@ rp_columns = ['RP 1', 'RP 2', 'RP 3']
 rp = onboarding[rp_columns]
 
 rp[rp_columns] = rp[rp_columns].apply(pd.to_numeric, errors='coerce', axis=1)
-rp = rp.loc[((rp['RP 1']==1) | (rp['RP 2']==1) | (rp['RP 3']==1)]
+rp = rp.loc[((rp['RP 1']==1) | (rp['RP 2']==1) | (rp['RP 3']==1))]
 
 heatmap2 = px.imshow(rp,text_auto=True,aspect="auto",color_continuous_scale='Blues')
 heatmap2.update_xaxes(side="top")
@@ -348,7 +348,7 @@ lg_columns = ['Alan LG 1 Group', 'LG 2']
 lg = onboarding[lg_columns]
 #lg = lg.loc[lg['Alan LG 1 Group']==1]
 lg[lg_columns] = lg[lg_columns].apply(pd.to_numeric, errors='coerce', axis=1)
-lg = lg.loc[((lg['Alan LG 1 Group']==1) | (lg['LG 2']==1)]
+lg = lg.loc[((lg['Alan LG 1 Group']==1) | (lg['LG 2']==1))]
 
 heatmap3 = px.imshow(lg,text_auto=True,aspect="auto",color_continuous_scale='Blues')
 heatmap3.update_xaxes(side="top")
