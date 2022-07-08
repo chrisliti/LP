@@ -45,12 +45,18 @@ focus_data['Account Manager'] = focus_data['Account Manager'].str.upper()
 ## 3. Coach Name
 
 focus_data["Coach Name"] = focus_data["Coach Name"].str.strip()
+focus_data["Coach Name"] = focus_data["Coach Name"].str.upper()
 
 ## 4. Start Date
 focus_data['Start Date'] = pd.to_datetime(focus_data['Start Date'])
 
 ## 5. Date Cancelled
 focus_data['Date Cancelled'] = pd.to_datetime(focus_data['Date Cancelled'])
+
+## 6. Country
+
+focus_data["Country"] = focus_data["Country"].str.strip()
+focus_data["Country"] = focus_data["Country"].str.upper()
 
 ################################################################################
 ## 3.0 FEATURE ENGINEERING
