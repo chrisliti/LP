@@ -90,7 +90,7 @@ st.header("SUMMARY STATISTICS")
 ## 4.0 DESCRIPTIVE STATS
 ################################################################################
 
-year_selections = st.selectbox('Select start year of interest',focus_data['Start Year'].unique(),default=2021)
+year_selections = st.multiselect('Select start year of interest',focus_data['Start Year'].unique(),default=2021)
 
 focus_data = focus_data.loc[focus_data['Start Year'] == year_selections]
 
