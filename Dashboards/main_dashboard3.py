@@ -90,9 +90,13 @@ st.header("SUMMARY STATISTICS")
 ## 4.0 DESCRIPTIVE STATS
 ################################################################################
 
-year_selections = st.multiselect('Select start year of interest',focus_data['Start Year'].unique(),default=2021)
+#year_selections = st.multiselect('Select start year of interest',focus_data['Start Year'].unique(),default=2021)
 
-focus_data = focus_data.loc[focus_data['Start Year'].isin(year_selections)]
+#focus_data = focus_data.loc[focus_data['Start Year'].isin(year_selections)]
+
+year_selections = st.selectbox('Select start year of interest',focus_data['Start Year'].unique())
+
+focus_data = focus_data.loc[focus_data['Start Year'] == year_selections]
 
 ## 1. Count of Account managers
 account_managers_count = focus_data['Account Manager'].nunique()
