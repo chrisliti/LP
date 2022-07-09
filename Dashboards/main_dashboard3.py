@@ -170,7 +170,7 @@ am_attrition = pd.merge(coaches_by_am[['Account Manager','new_coaches_count']],c
 am_attrition['Attrition Percent'] = (round(am_attrition['Cancelled_count'] / am_attrition['new_coaches_count'],4))*100
 am_attrition.sort_values('Attrition Percent',ascending=True,inplace=True)
 
-n=30
+n=20
 am_attrition_topn = am_attrition.sort_values('Attrition Percent',ascending=False).head(n)
 am_attrition_topn.sort_values('Attrition Percent',ascending=True,inplace=True)
 
