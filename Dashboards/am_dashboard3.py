@@ -590,115 +590,115 @@ barchart3.plotly_chart(active_months_count)
 ## Attrition over 12 window to_period
 ###################################################################################
 
-if year_selections == 2021 :
-  jan2021_jan2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-01-01') & (focus_data['Start Date'] < '2022-01-01'))]
-  jan2021_jan2022['Churned'] = jan2021_jan2022['Stopped'].copy()
-  jan2021_jan2022.loc[jan2021_jan2022['Date Cancelled'] >= '2022-01-01','Churned'] = 0
-  jan_window_coaches = len(jan2021_jan2022)
-  jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[1],4)*100
+#if year_selections == 2021 :
+  #jan2021_jan2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-01-01') & (focus_data['Start Date'] < '2022-01-01'))]
+  #jan2021_jan2022['Churned'] = jan2021_jan2022['Stopped'].copy()
+  #jan2021_jan2022.loc[jan2021_jan2022['Date Cancelled'] >= '2022-01-01','Churned'] = 0
+  #jan_window_coaches = len(jan2021_jan2022)
+  #jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[1],4)*100
   
 
-  feb2021_feb2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-02-01') & (focus_data['Start Date'] < '2022-02-01'))]
-  feb2021_feb2022['Churned'] = feb2021_feb2022['Stopped'].copy()
-  feb2021_feb2022.loc[feb2021_feb2022['Date Cancelled'] >= '2022-02-01','Churned'] = 0
-  feb_window_coaches = len(feb2021_feb2022)
-  feb_churn_rate = np.round(feb2021_feb2022['Churned'].value_counts(normalize=True)[1],4)*100
+#   feb2021_feb2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-02-01') & (focus_data['Start Date'] < '2022-02-01'))]
+#   feb2021_feb2022['Churned'] = feb2021_feb2022['Stopped'].copy()
+#   feb2021_feb2022.loc[feb2021_feb2022['Date Cancelled'] >= '2022-02-01','Churned'] = 0
+#   feb_window_coaches = len(feb2021_feb2022)
+#   feb_churn_rate = np.round(feb2021_feb2022['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  mar2021_mar2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-03-01') & (focus_data['Start Date'] < '2022-03-01'))]
-  mar2021_mar2022['Churned'] = mar2021_mar2022['Stopped'].copy()
-  mar2021_mar2022.loc[mar2021_mar2022['Date Cancelled'] >= '2022-03-01','Churned'] = 0
-  mar_window_coaches = len(mar2021_mar2022)
-  mar_churn_rate = np.round(mar2021_mar2022['Churned'].value_counts(normalize=True)[1],4)*100
+#   mar2021_mar2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-03-01') & (focus_data['Start Date'] < '2022-03-01'))]
+#   mar2021_mar2022['Churned'] = mar2021_mar2022['Stopped'].copy()
+#   mar2021_mar2022.loc[mar2021_mar2022['Date Cancelled'] >= '2022-03-01','Churned'] = 0
+#   mar_window_coaches = len(mar2021_mar2022)
+#   mar_churn_rate = np.round(mar2021_mar2022['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  apr2021_apr2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-04-01') & (focus_data['Start Date'] < '2022-04-01'))]
-  apr2021_apr2022['Churned'] = apr2021_apr2022['Stopped'].copy()
-  apr2021_apr2022.loc[apr2021_apr2022['Date Cancelled'] >= '2022-04-01','Churned'] = 0
-  apr_window_coaches = len(apr2021_apr2022)
-  apr_churn_rate = np.round(apr2021_apr2022['Churned'].value_counts(normalize=True)[1],4)*100
+#   apr2021_apr2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-04-01') & (focus_data['Start Date'] < '2022-04-01'))]
+#   apr2021_apr2022['Churned'] = apr2021_apr2022['Stopped'].copy()
+#   apr2021_apr2022.loc[apr2021_apr2022['Date Cancelled'] >= '2022-04-01','Churned'] = 0
+#   apr_window_coaches = len(apr2021_apr2022)
+#   apr_churn_rate = np.round(apr2021_apr2022['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  may2021_may2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-05-01') & (focus_data['Start Date'] < '2022-05-01'))]
-  may2021_may2022['Churned'] = may2021_may2022['Stopped'].copy()
-  may2021_may2022.loc[may2021_may2022['Date Cancelled'] >= '2022-05-01','Churned'] = 0
-  may_window_coaches = len(may2021_may2022)
-  may_churn_rate = np.round(may2021_may2022['Churned'].value_counts(normalize=True)[1],4)*100
+#   may2021_may2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-05-01') & (focus_data['Start Date'] < '2022-05-01'))]
+#   may2021_may2022['Churned'] = may2021_may2022['Stopped'].copy()
+#   may2021_may2022.loc[may2021_may2022['Date Cancelled'] >= '2022-05-01','Churned'] = 0
+#   may_window_coaches = len(may2021_may2022)
+#   may_churn_rate = np.round(may2021_may2022['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  june2021_june2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-06-01') & (focus_data['Start Date'] < '2022-06-01'))]
-  june2021_june2022['Churned'] = june2021_june2022['Stopped'].copy()
-  june2021_june2022.loc[june2021_june2022['Date Cancelled'] >= '2022-06-01','Churned'] = 0
-  june_window_coaches = len(june2021_june2022)
-  june_churn_rate = np.round(june2021_june2022['Churned'].value_counts(normalize=True)[1],4)*100
+#   june2021_june2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-06-01') & (focus_data['Start Date'] < '2022-06-01'))]
+#   june2021_june2022['Churned'] = june2021_june2022['Stopped'].copy()
+#   june2021_june2022.loc[june2021_june2022['Date Cancelled'] >= '2022-06-01','Churned'] = 0
+#   june_window_coaches = len(june2021_june2022)
+#   june_churn_rate = np.round(june2021_june2022['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  window_period = ['Jan2021 - Jan2022','Feb2021 - Feb2022','Mar2021 - Mar2022','Apr2021 - Apr2022','May2021 - May2022','June2021 - June2022']
-  window_coach_count = [jan_window_coaches,feb_window_coaches,mar_window_coaches,apr_window_coaches,may_window_coaches,june_window_coaches]
-  window_churn_rate = [jan_churn_rate,feb_churn_rate,mar_churn_rate,apr_churn_rate,may_churn_rate,june_churn_rate]
+#   window_period = ['Jan2021 - Jan2022','Feb2021 - Feb2022','Mar2021 - Mar2022','Apr2021 - Apr2022','May2021 - May2022','June2021 - June2022']
+#   window_coach_count = [jan_window_coaches,feb_window_coaches,mar_window_coaches,apr_window_coaches,may_window_coaches,june_window_coaches]
+#   window_churn_rate = [jan_churn_rate,feb_churn_rate,mar_churn_rate,apr_churn_rate,may_churn_rate,june_churn_rate]
 
-  window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate Percentage':window_churn_rate})
+#   window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate Percentage':window_churn_rate})
 
 
-  window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate Percentage',text="Window Coach Count",color_discrete_sequence=['Blue'])
-  window_churn_bar.update_layout(
-      title={
-          'text': '<b>Churn Rate Over 12 Months</b>',
-          'y':1.0,
-          'x':0.5,
-          'xanchor': 'center',
-          'yanchor': 'top'})
+#   window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate Percentage',text="Window Coach Count",color_discrete_sequence=['Blue'])
+#   window_churn_bar.update_layout(
+#       title={
+#           'text': '<b>Churn Rate Over 12 Months</b>',
+#           'y':1.0,
+#           'x':0.5,
+#           'xanchor': 'center',
+#           'yanchor': 'top'})
 
-  window_churn_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
+#   window_churn_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
-  barchart4.plotly_chart(window_churn_bar)
+#   barchart4.plotly_chart(window_churn_bar)
 
-else:
+# else:
 
-  jan2022_jan2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-01-01') & (focus_data['Start Date'] < '2023-01-01'))]
-  jan2022_jan2023['Churned'] = jan2022_jan2023['Stopped'].copy()
-  jan2022_jan2023.loc[jan2022_jan2023['Date Cancelled'] >= '2023-01-01','Churned'] = 0
-  jan_window_coaches = len(jan2022_jan2023)
-  jan_churn_rate = np.round(jan2022_jan2023['Churned'].value_counts(normalize=True)[1],4)*100
+#   jan2022_jan2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-01-01') & (focus_data['Start Date'] < '2023-01-01'))]
+#   jan2022_jan2023['Churned'] = jan2022_jan2023['Stopped'].copy()
+#   jan2022_jan2023.loc[jan2022_jan2023['Date Cancelled'] >= '2023-01-01','Churned'] = 0
+#   jan_window_coaches = len(jan2022_jan2023)
+#   jan_churn_rate = np.round(jan2022_jan2023['Churned'].value_counts(normalize=True)[1],4)*100
   
 
 
-  feb2022_feb2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-02-01') & (focus_data['Start Date'] < '2023-02-01'))]
-  feb2022_feb2023['Churned'] = feb2022_feb2023['Stopped'].copy()
-  feb2022_feb2023.loc[feb2022_feb2023['Date Cancelled'] >= '2023-02-01','Churned'] = 0
-  feb_window_coaches = len(feb2022_feb2023)
-  feb_churn_rate = np.round(feb2022_feb2023['Churned'].value_counts(normalize=True)[1],4)*100
+#   feb2022_feb2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-02-01') & (focus_data['Start Date'] < '2023-02-01'))]
+#   feb2022_feb2023['Churned'] = feb2022_feb2023['Stopped'].copy()
+#   feb2022_feb2023.loc[feb2022_feb2023['Date Cancelled'] >= '2023-02-01','Churned'] = 0
+#   feb_window_coaches = len(feb2022_feb2023)
+#   feb_churn_rate = np.round(feb2022_feb2023['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  mar2022_mar2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-03-01') & (focus_data['Start Date'] < '2023-03-01'))]
-  mar2022_mar2023['Churned'] = mar2022_mar2023['Stopped'].copy()
-  mar2022_mar2023.loc[mar2022_mar2023['Date Cancelled'] >= '2023-03-01','Churned'] = 0
-  mar_window_coaches = len(mar2022_mar2023)
-  mar_churn_rate = np.round(mar2022_mar2023['Churned'].value_counts(normalize=True)[1],4)*100
+#   mar2022_mar2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-03-01') & (focus_data['Start Date'] < '2023-03-01'))]
+#   mar2022_mar2023['Churned'] = mar2022_mar2023['Stopped'].copy()
+#   mar2022_mar2023.loc[mar2022_mar2023['Date Cancelled'] >= '2023-03-01','Churned'] = 0
+#   mar_window_coaches = len(mar2022_mar2023)
+#   mar_churn_rate = np.round(mar2022_mar2023['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  apr2022_apr2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-04-01') & (focus_data['Start Date'] < '2023-04-01'))]
-  apr2022_apr2023['Churned'] = apr2022_apr2023['Stopped'].copy()
-  apr2022_apr2023.loc[apr2022_apr2023['Date Cancelled'] >= '2023-04-01','Churned'] = 0
-  apr_window_coaches = len(apr2022_apr2023)
-  apr_churn_rate = np.round(apr2022_apr2023['Churned'].value_counts(normalize=True)[1],4)*100
+#   apr2022_apr2023 = focus_data.loc[((focus_data['Start Date'] >= '2022-04-01') & (focus_data['Start Date'] < '2023-04-01'))]
+#   apr2022_apr2023['Churned'] = apr2022_apr2023['Stopped'].copy()
+#   apr2022_apr2023.loc[apr2022_apr2023['Date Cancelled'] >= '2023-04-01','Churned'] = 0
+#   apr_window_coaches = len(apr2022_apr2023)
+#   apr_churn_rate = np.round(apr2022_apr2023['Churned'].value_counts(normalize=True)[1],4)*100
 
 
-  window_period = ['Jan2022 - Jan2023','Feb2022 - Feb2023','Mar2022 - Mar2023','Apr2022 - Apr2023']
-  window_coach_count = [jan_window_coaches,feb_window_coaches,mar_window_coaches,apr_window_coaches]
-  window_churn_rate = [jan_churn_rate,feb_churn_rate,mar_churn_rate,apr_churn_rate]
+#   window_period = ['Jan2022 - Jan2023','Feb2022 - Feb2023','Mar2022 - Mar2023','Apr2022 - Apr2023']
+#   window_coach_count = [jan_window_coaches,feb_window_coaches,mar_window_coaches,apr_window_coaches]
+#   window_churn_rate = [jan_churn_rate,feb_churn_rate,mar_churn_rate,apr_churn_rate]
 
-  window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate Percentage':window_churn_rate})
+#   window_churn_data = pd.DataFrame({'Window Period':window_period,'Window Coach Count':window_coach_count,'Window Churn Rate Percentage':window_churn_rate})
 
-  window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate Percentage',text="Window Coach Count",color_discrete_sequence=['Blue'])
-  window_churn_bar.update_layout(
-      title={
-          'text': '<b>Churn Rate Over 12 Months</b>',
-          'y':1.0,
-          'x':0.5,
-          'xanchor': 'center',
-          'yanchor': 'top'})
+#   window_churn_bar = px.bar(data_frame = window_churn_data, x="Window Period", y = 'Window Churn Rate Percentage',text="Window Coach Count",color_discrete_sequence=['Blue'])
+#   window_churn_bar.update_layout(
+#       title={
+#           'text': '<b>Churn Rate Over 12 Months</b>',
+#           'y':1.0,
+#           'x':0.5,
+#           'xanchor': 'center',
+#           'yanchor': 'top'})
 
-  window_churn_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
+#   window_churn_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=False)))
 
-  barchart4.plotly_chart(window_churn_bar)
+#   barchart4.plotly_chart(window_churn_bar)
