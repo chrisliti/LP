@@ -543,7 +543,8 @@ jan2021_jan2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-01-01') & (
 jan2021_jan2022['Churned'] = jan2021_jan2022['Stopped'].copy()
 jan2021_jan2022.loc[jan2021_jan2022['Date Cancelled'] >= '2022-01-01','Churned'] = 0
 jan_window_coaches = len(jan2021_jan2022)
-jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[1],4)*100
+jan_churn_rate = np.round(jan2021_jan2022['Churned'].value_counts(normalize=True)[0],4)*100
+jan_churn_rate = jan_churn_rate - jan_churn_rate
 
 
 feb2021_feb2022 = focus_data.loc[((focus_data['Start Date'] >= '2021-02-01') & (focus_data['Start Date'] < '2022-02-01'))]
