@@ -196,7 +196,7 @@ bar_chart1.plotly_chart(fig_atr_by_ch)
 ## 5.1 How long do the attriting coaches last
 attriting = focus_data.loc[focus_data['Stopped_2021']==1]
 
-attriting2 = attriting.loc[attriting['Days On Platform'] > 0]
+attriting2 = attriting.loc[attriting['Days On Platform'] >= 0]
 
 min_days = attriting2['Days On Platform'].describe()['min']
 percentile_25_days = attriting2['Days On Platform'].describe()['25%']
