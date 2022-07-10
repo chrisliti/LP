@@ -525,9 +525,11 @@ month_diff = Cancelled_Month - Start_Month
 cancelled_coaches['Active_Months'] = year_diff*12 + month_diff + 1
 
 cancelled_coaches_grouped = cancelled_coaches.groupby(by=["Active_Months"]).size().reset_index(name="Number of Coaches")
+cancelled_coaches_grouped['Percent'] = round((cancelled_coaches_grouped['Number of Coaches']/cancelled_coaches_grouped['Number of Coaches'].sum())*100,2)
 
 
-active_months_count = px.bar(data_frame=cancelled_coaches_grouped, x="Active_Months",y="Number of Coaches",color_discrete_sequence=['Blue'])
+active_months_count = px.bar(data_frame=cancelled_coaches_grouped, x="Active_Months",y="Number of Coaches",text='Percent',color_discrete_sequence=['Blue'])
+
 active_months_count.update_layout(
     title={
         'text': '<b>Active Months on Platform for Cancelled Coaches</b>',
