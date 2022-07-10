@@ -205,7 +205,7 @@ fig_atr_by_ch.update_layout(plot_bgcolor="rgba(0,0,0,0)",xaxis=(dict(showgrid=Fa
 attriting = focus_data.loc[focus_data['Stopped_2021']==1]
 #attriting.loc[attriting['Days On Platform'].isnull()]
 #attriting.loc[attriting['Days On Platform'] < 0]
-attriting2 = attriting.loc[attriting['Days On Platform'] > 0]
+attriting2 = attriting.loc[attriting['Days On Platform'] >= 0]
 
 min_days = attriting2['Days On Platform'].describe()['min']
 percentile_25_days = attriting2['Days On Platform'].describe()['25%']
