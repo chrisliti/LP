@@ -486,6 +486,9 @@ rt_cum_heatmap = px.imshow(cohort_table2, text_auto=True,color_continuous_scale=
 rt_cum_heatmap.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 cohort_table_1.plotly_chart(rt_cum_heatmap)
 
+###########################
+## START DATES
+###########################
 
 start_dates = focus_data.loc[focus_data['Start Date'].notnull()]
 #start_dates['start_month'] = start_dates['Start Date'].apply(lambda x: x.strftime('%B-%Y')) 
@@ -493,8 +496,9 @@ start_dates['start_month'] = start_dates['Start Date'].apply(get_month)
 start_dates_count = start_dates.groupby('start_month')['start_month'].count().reset_index(name="counts")
 start_dates_count.sort_values('start_month',ascending=True)
 start_dates_count['Start_Month'] = start_dates_count['start_month'].apply(lambda x: x.strftime('%B-%Y'))
+start_dates_count['Percent'] = round((start_dates_count['counts']/start_dates_count['counts'].sum())*100,2)
 
-fig_start_dates_count = px.bar(data_frame=start_dates_count, x="Start_Month", y="counts",color_discrete_sequence=['Blue'])
+fig_start_dates_count = px.bar(data_frame=start_dates_count, x="Start_Month", y="counts",text='Percent',color_discrete_sequence=['Blue'])
 fig_start_dates_count.update_layout(
     title={
         'text': '<b>New Coaches on Platform by Month</b>',
